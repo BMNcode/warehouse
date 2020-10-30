@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS Public.goods (
 ) WITHOUT OIDS;
 
 CREATE TABLE IF NOT EXISTS Public.warehouse (
-  id_product int8 not null references goods(id_product),
+  id_product int8 not null references goods(id_product) on delete cascade,
   date_receipt timestamp not null,
   count_product int8 not null,
   description varchar(1000)
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Public.warehouse (
 
 CREATE TABLE IF NOT EXISTS Public.orders (
   id_order int8 not null,
-  id_product int8 not null references goods(id_product),
+  id_product int8 not null references goods(id_product) on delete cascade,
   organization varchar(255) not null,
   count_product int8 not null,
   description varchar(1000),
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Public.orders (
 
 CREATE TABLE IF NOT EXISTS Public.release_goods (
   id_order int8 not null references orders(id_order),
-  id_product int8 not null references goods(id_product),
+  id_product int8 not null references goods(id_product) on delete cascade,
   date_release timestamp not null,
   count_product int8 not null,
   description varchar(1000)

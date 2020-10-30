@@ -20,7 +20,6 @@ public class PostgresConnUtils {
             String userName, String password) throws SQLException{
         String connectionURL = "jdbc:postgresql://" + hostName + "/" + bmName;
 
-        Connection conn = DriverManager.getConnection(connectionURL, userName, password);
-        return conn;
+        return DriverManager.getConnection(connectionURL, userName, password);
     }
 }
